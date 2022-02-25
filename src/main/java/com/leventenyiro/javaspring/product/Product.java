@@ -1,4 +1,4 @@
-package com.leventenyiro.javaspring.models;
+package com.leventenyiro.javaspring.product;
 
 public class Product {
     private Integer id;

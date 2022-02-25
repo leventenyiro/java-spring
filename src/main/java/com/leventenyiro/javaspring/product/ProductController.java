@@ -1,9 +1,8 @@
-package com.leventenyiro.javaspring.controllers;
+package com.leventenyiro.javaspring.product;
 
 import java.util.List;
 
-import com.leventenyiro.javaspring.models.Product;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "api/product")
 public class ProductController {
 
+	private final ProductService productService;
+
+	@Autowired
+	public ProductController(ProductService productService) {
+		this.productService = productService;
+	}
+
     //@RequestMapping(path="valami")
     @GetMapping
 	public List<Product> getProducts() {
-		return List.of(new Product(1, "Sajt", 750));
+		return productService.getProducts();
 	}
 }

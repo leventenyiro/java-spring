@@ -2,7 +2,7 @@ package com.leventenyiro.javaspring;
 
 import java.util.List;
 
-import com.leventenyiro.javaspring.models.Product;
+import com.leventenyiro.javaspring.product.Product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
