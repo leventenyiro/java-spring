@@ -17,14 +17,14 @@ public class Product {
     private String name;
     private Integer price;
     private Integer active;
-    private String imagePath;
+    private String image;
 
-    public Product(Integer id, String name, Integer price, Integer active, String imagePath) {
+    public Product(Integer id, String name, Integer price, Integer active, String image) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.active = active;
-        this.imagePath = imagePath;
+        this.image = image;
     }
 
     public Product() {}
@@ -61,11 +61,19 @@ public class Product {
         this.active = active;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public String getImage() {
+        return image;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImage(String image) {
+        this.image = image;
     }
+
+    @Override
+    public String toString() {
+        return "Product [active=" + active + ", id=" + id + ", image=" + image + ", name=" + name + ", price=" + price
+                + "]";
+    }
+
+    
 }

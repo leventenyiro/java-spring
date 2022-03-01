@@ -20,6 +20,7 @@ public class ProductService {
 	}
 
     public void addProduct(Product product) {
+        //System.out.println("product: " + product);
         productRepository.save(product);
     }
 }
