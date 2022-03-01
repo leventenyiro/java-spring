@@ -23,4 +23,24 @@ public class ProductService {
         //System.out.println("product: " + product);
         productRepository.save(product);
     }
+
+    public Product getProduct(Integer id) {
+        //System.out.println("product: " + product);
+        return productRepository.findById(id).get();
+    }
+
+    public void updateProduct(Integer id, Product product) {
+        //System.out.println("product: " + product);
+        Product oldProduct = productRepository.getById(id);
+        oldProduct.setName(product.getName());
+        oldProduct.setPrice(product.getPrice());
+        oldProduct.setActive(product.getActive());
+        oldProduct.setImage(product.getImage());
+        productRepository.save(oldProduct);
+    }
+
+    public void deleteProduct(Integer id) {
+        //System.out.println("product: " + product);
+        productRepository.deleteById(id);
+    }
 }
