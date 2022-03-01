@@ -16,12 +16,18 @@ public class Product {
     private Integer id;
     private String name;
     private Integer price;
+    private Integer active;
+    private String imagePath;
 
-    public Product(Integer id, String name, Integer price) {
+    public Product(Integer id, String name, Integer price, Integer active, String imagePath) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.active = active;
+        this.imagePath = imagePath;
     }
+
+    public Product() {}
 
     public Integer getId() {
         return id;
@@ -45,5 +51,21 @@ public class Product {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Integer getActive() {
+        return active;
+    }
+
+    public void setActive(Integer active) {
+        this.active = active;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

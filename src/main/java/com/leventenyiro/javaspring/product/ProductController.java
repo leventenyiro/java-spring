@@ -23,6 +23,7 @@ public class ProductController {
     //@RequestMapping(path="valami")
     @GetMapping
 	public List<Product> getProducts() {
+		//System.out.println(productService.getProducts().get(0).getName());
 		return productService.getProducts();
 	}
 
