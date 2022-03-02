@@ -1,4 +1,4 @@
-package com.leventenyiro.javaspring.product;
+package com.leventenyiro.javaspring.user;
 
 import java.util.List;
 
@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "api/product")
-public class ProductController {
+public class UserController {
 
-	private final ProductService productService;
+	private final UserService productService;
 
 	@Autowired
-	public ProductController(ProductService productService) {
+	public UserController(UserService productService) {
 		this.productService = productService;
 	}
 
