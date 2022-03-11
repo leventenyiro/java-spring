@@ -2,6 +2,9 @@ package com.leventenyiro.javaspring.registration.token;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+
+@Entity
 public class ConfirmationToken {
     private String id;
     private String token;
