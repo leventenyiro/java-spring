@@ -49,6 +49,10 @@ public class User implements UserDetails {
         return Collections.singletonList(authority);
     }
 
+    public String getId() {
+        return id;
+    }
+
     @Override
     public String getPassword() {
         return password;

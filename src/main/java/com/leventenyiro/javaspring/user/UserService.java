@@ -1,5 +1,8 @@
 package com.leventenyiro.javaspring.user;
 
+import com.leventenyiro.javaspring.registration.token.ConfirmationToken;
+import com.leventenyiro.javaspring.registration.token.ConfirmationTokenService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,11 +16,13 @@ public class UserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
     private final UserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ConfirmationTokenService confirmationTokenService;
 
     @Autowired
-    public UserService(UserRepository appUserRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserService(UserRepository appUserRepository, BCryptPasswordEncoder bCryptPasswordEncoder, ConfirmationTokenService confirmationTokenService) {
         this.appUserRepository = appUserRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.confirmationTokenService = confirmationTokenService;
     }
     
     @Override
@@ -35,7 +40,10 @@ public class UserService implements UserDetailsService {
 
         appUserRepository.save(appUser);
 
-        // TODO: Send confirmation token
+        // token
+        confirmationTokenService.saveConfirmationToken(new ConfirmationToken(appUser.getId()));
+
+        // send email
         
         return "it works";
     }
