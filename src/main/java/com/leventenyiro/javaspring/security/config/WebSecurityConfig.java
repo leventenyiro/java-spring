@@ -1,6 +1,6 @@
 package com.leventenyiro.javaspring.security.config;
 
-import com.leventenyiro.javaspring.appuser.AppUserService;
+import com.leventenyiro.javaspring.user.UserService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +13,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final AppUserService appUserService;
+    private final UserService appUserService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public WebSecurityConfig(AppUserService appUserService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public WebSecurityConfig(UserService appUserService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.appUserService = appUserService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }

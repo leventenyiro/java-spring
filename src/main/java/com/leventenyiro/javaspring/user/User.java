@@ -1,4 +1,4 @@
-package com.leventenyiro.javaspring.appuser;
+package com.leventenyiro.javaspring.user;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -14,10 +14,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class AppUser implements UserDetails {
+public class User implements UserDetails {
 
     @Id
-    @SequenceGenerator(
+    /*@SequenceGenerator(
         name = "user_sequence",
         sequenceName = "user_sequence",
         allocationSize = 1
@@ -25,20 +25,22 @@ public class AppUser implements UserDetails {
     @GeneratedValue(
         strategy = GenerationType.SEQUENCE,
         generator = "user_sequence"
-    )
-    private Long id;
+    )*/
+    private String id;
     private String username;
     private String email;
     private String password;
-    private Boolean locked;
-    private Boolean enabled;
+    private Boolean enabled = false;
+    private String image;
 
-    public AppUser(String username, String email, String password, Boolean locked, Boolean enabled) {
+    public User() {}
+
+    public User(String username, String email, String password) {
+        this.id = java.util.UUID.randomUUID().toString();
         this.username = username;
         this.email = email;
         this.password = password;
-        this.locked = locked;
-        this.enabled = enabled;
+        this.image = "profile.png";
     }
 
     @Override
@@ -52,6 +54,10 @@ public class AppUser implements UserDetails {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     @Override
     public String getUsername() {
         return username;
@@ -68,7 +74,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !locked;
+        return true;
     }
 
     @Override

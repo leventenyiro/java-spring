@@ -1,4 +1,4 @@
-package com.leventenyiro.javaspring.appuser;
+package com.leventenyiro.javaspring.user;
 
 import java.util.Optional;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public interface AppUserRepository extends JpaRepository<AppUser, Long> {
-    Optional<AppUser> findByEmail(String email);
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
+    Optional<User> findByUsername(String username);
 }
